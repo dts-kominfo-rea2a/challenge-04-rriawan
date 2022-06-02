@@ -8,8 +8,23 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, posisi) => {
+  if (posisi > -1) {
+    const epoch = new Date(dates[posisi]) / 1000;
+    return epoch.toString();
+  }
+  let jawaban = "";
+  const epochDateTimes = [];
+  for (let tanggal of dates) {
+    epochDateTimes.push(new Date(tanggal) / 1000);
+  }
+  epochDateTimes.sort((a, b) => a - b);
 
+  for (let epoch of epochDateTimes) {
+    jawaban += `${epoch} `;
+  }
+  return jawaban.split(" ").join("-").slice(0, -1);
+};
 // ! JANGAN DIMODIFIKASI
 (() => {
   // IIFE
